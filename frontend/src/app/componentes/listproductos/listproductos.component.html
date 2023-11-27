@@ -1,0 +1,41 @@
+<app-progreso-bar *ngIf="loading"></app-progreso-bar>
+<div class="containe">
+    <div *ngIf="!loading" class="title">
+        <h4>Listado de Perfumes</h4>
+    <button type="button" class="btn btn-primary" routerLink="/add" fdprocessedid="r4agja">Agregar Articulo</button>
+    </div>
+    
+    <table *ngIf ="listproductos.length > 0" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Articulo</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listproductos" class="table-active">
+            <td>{{ item.nombre}}</td> 
+            <td>{{ item.descripcion}}</td>
+            <td>{{ item.precio | currency}}</td>
+            <td>{{ item.stock}}</td>
+            <td>
+                <button type="button" class="btn btn-dark btn-sm" routerLink="/editar/{{ item.id}}" fdprocessedid="fkv892">Editar</button>
+                <button (click)="deleteProduct(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2" fdprocessedid="fkv892">Borrar</button> 
+            </td>
+          </tr>
+          <tr>
+            <td scope="row">Default</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+        </tbody>
+      </table>
+      <h5 *ngIf ="listproductos.length == 0">No hay producto para mostrar</h5>
+</div>
+
+
